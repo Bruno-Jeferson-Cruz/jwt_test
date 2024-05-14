@@ -1,6 +1,6 @@
 package jwt_test.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -10,16 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jwt_test.entities.AuthUser;
 import jwt_test.repository.AuthUserRepository;
+import lombok.AllArgsConstructor;
 
 @RestController
+@AllArgsConstructor
 public class UserController {
 	private final AuthUserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
-
-	public UserController(AuthUserRepository userRepository, PasswordEncoder passwordEncoder) {
-		this.userRepository = userRepository;
-		this.passwordEncoder = passwordEncoder;
-	}
 
 	@PostMapping("/register")
 	public ResponseEntity registerUser(@RequestBody AuthUser user) {
